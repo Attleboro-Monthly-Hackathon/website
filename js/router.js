@@ -2,6 +2,7 @@ import { setMetaDescription, setPageTitle } from "./assets.js";
 import { bindConfig, getCollections, getPage, interpolate, siteConfig } from "./config.js";
 import {
   contentEditUrl,
+  contentNewUrl,
   findItem,
   itemEyebrow,
   loadCatalog,
@@ -11,6 +12,17 @@ import {
 import { fillSlot, pruneOptional } from "./dom.js";
 
 let renderGeneration = 0;
+
+function contribLink(url, label) {
+  if (!url || !label) return "";
+  return `<a href="${url}" rel="noopener noreferrer" target="_blank">${label}</a>`;
+}
+
+function newPageLink(kind) {
+  const collection = getCollections()[kind];
+  const label = collection?.newPageLabel || siteConfig.newPageLabel || "Start a new page";
+  return contribLink(contentNewUrl(kind), label);
+}
 
 function escapeRe(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -103,6 +115,7 @@ async function renderIndex(kind) {
   setPageTitle(copy.title);
   setMetaDescription(copy.description);
   main.innerHTML = interpolate(await loadPage("listing"), copy);
+  fillSlot(main, "new-page", newPageLink(kind));
 }
 
 async function renderDoc(kind, slug) {
@@ -162,9 +175,10 @@ async function renderDoc(kind, slug) {
       const editUrl = contentEditUrl(kind, item);
       if (!editUrl) return "";
       const label = siteConfig.fixTypoLabel || "Fix a typo";
-      return `<a href="${editUrl}" rel="noopener noreferrer" target="_blank">${label}</a>`;
+      return contribLink(editUrl, label);
     })()
   );
+  fillSlot(main, "new-page", newPageLink(kind));
 }
 
 async function renderNotFound() {

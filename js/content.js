@@ -100,3 +100,17 @@ export function contentEditUrl(kind, item) {
   return `${repo}/edit/${branch}/${path.replace(/^\/+/, "")}`;
 }
 
+/** GitHub “create file” URL for a new page in a content category. */
+export function contentNewUrl(kind) {
+  const folder = String(kind || "")
+    .trim()
+    .replace(/^\/+|\/+$/g, "");
+  if (!folder || folder.includes("..") || folder.includes("/")) return null;
+
+  const repo = String(siteConfig.githubWebsiteUrl || "").replace(/\/$/, "");
+  const branch = siteConfig.githubBranch || "main";
+  if (!repo) return null;
+
+  return `${repo}/new/${branch}/content/${folder}?filename=your-page-slug.html`;
+}
+

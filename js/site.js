@@ -33,6 +33,7 @@ bindConfig(document);
 await Promise.all([
   loadChrome("header"),
   loadChrome("footer"),
+  loadChrome("motd"),
   loadChrome("calendar"),
   loadChrome("content-item"),
   loadPage("home"),

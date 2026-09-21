@@ -23,6 +23,13 @@
   "githubWebsiteUrl": "https://github.com/Attleboro-Monthly-Hackathon/APL-monthly-hackathon-website",
   "githubBranch": "main",
   "fixTypoLabel": "Fix a typo",
+  "newPageLabel": "Start a new page",
+  "motd": {
+    "enabled": true,
+    "text": "The September hackathon will be about web development",
+    "href": "#/themes/build-a-website",
+    "linkLabel": "See the workshop idea"
+  },
   "libcalCid": "21308",
   "libcalBaseUrl": "https://attleborolibrary.libcal.com",
   "libcalSearchQ": "Hackathon",
@@ -47,7 +54,8 @@
       "path": "#/articles",
       "backLabel": "All articles",
       "metaKey": "date",
-      "wrapClass": "wrap wrap--narrow"
+      "wrapClass": "wrap wrap--narrow",
+      "newPageLabel": "Add an article"
     },
     "themes": {
       "key": "themes",
@@ -56,7 +64,8 @@
       "backLabel": "All workshop ideas",
       "metaKey": "theme",
       "eyebrow": "Workshop idea",
-      "wrapClass": "wrap"
+      "wrapClass": "wrap",
+      "newPageLabel": "Add a workshop idea"
     },
     "tutorials": {
       "key": "tutorials",
@@ -64,7 +73,8 @@
       "path": "#/tutorials",
       "backLabel": "All tutorials",
       "metaKey": "level",
-      "wrapClass": "wrap"
+      "wrapClass": "wrap",
+      "newPageLabel": "Add a tutorial"
     }
   },
   "pages": {

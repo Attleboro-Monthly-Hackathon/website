@@ -115,6 +115,16 @@
       "bannerTitle": "Version control & contributing",
       "bannerText": "Read git status before every other command. Pair with the Git tutorial page.",
       "sourcePath": "content/themes/git-for-beginners.html"
+    },
+    {
+      "slug": "build-a-website",
+      "title": "Build a Website",
+      "theme": "Web programming",
+      "summary": "HTML, CSS, and JavaScript \u2014 ship a real page, then stretch into a small multi-section site.",
+      "lede": "From a single landing page to a tiny portfolio or meetup homepage. Structure first, style second, interactivity last.",
+      "bannerTitle": "Web programming",
+      "bannerText": "Finish something you can open in a browser. Pair with the HTML, CSS, and JavaScript tutorials if you want a warm-up.",
+      "sourcePath": "content/themes/build-a-website.html"
     }
   ],
   "tutorials": [
