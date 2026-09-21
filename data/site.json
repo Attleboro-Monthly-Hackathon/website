@@ -24,6 +24,18 @@
   "githubBranch": "main",
   "fixTypoLabel": "Fix a typo",
   "newPageLabel": "Start a new page",
+  "admin": {
+    "links": [
+      {
+        "href": "https://docs.google.com/spreadsheets/d/1jpSX4Y9WURRPydAnNjFGozlbxXmiWf5tq4w8phA3xX8/edit?resourcekey=&gid=17562846#gid=17562846",
+        "label": "RSVP responses"
+      },
+      {
+        "href": "https://docs.google.com/spreadsheets/d/1An5OGk-xPY181n6ufzazyxCL9w5DwwbhgMxLKtUw3D8/edit?resourcekey=&gid=1420049897#gid=1420049897",
+        "label": "Registration responses"
+      }
+    ]
+  },
   "motd": {
     "enabled": true,
     "text": "The September hackathon will be about web development",
@@ -86,6 +98,13 @@
       "title": "Page not found",
       "description": "That page is not in the Attleboro Public Library Hackathon site."
     },
+    "admin": {
+      "title": "Admin",
+      "eyebrow": "Organizers",
+      "heading": "Admin",
+      "lead": "Form response sheets and other organizer tools. You need access to the linked Google account.",
+      "description": "Organizer links for the Attleboro Public Library Hackathon."
+    },
     "articles": {
       "kind": "articles",
       "title": "Articles",
@@ -137,7 +156,8 @@
       { "href": "#/articles", "label": "Articles" },
       { "href": "#/themes", "label": "Workshop ideas" },
       { "href": "#/tutorials", "label": "Tutorials" },
-      { "href": "#/calendar", "label": "Calendar" }
+      { "href": "#/calendar", "label": "Calendar" },
+      { "href": "#/admin", "label": "Admin" }
     ]
   },
   "ui": {

@@ -1,5 +1,5 @@
 import { setMetaDescription, setPageTitle } from "./assets.js";
-import { bindConfig, getCollections, getPage, interpolate, siteConfig } from "./config.js";
+import { bindConfig, getCollections, getPage, getSite, interpolate, siteConfig } from "./config.js";
 import {
   contentEditUrl,
   contentNewUrl,
@@ -45,6 +45,7 @@ export function currentRoute() {
 export function parseRoute(route = currentRoute()) {
   if (route === "/" || route === "") return { name: "home" };
   if (route === "/calendar") return { name: "home", scroll: "calendar" };
+  if (route === "/admin") return { name: "admin" };
 
   const match = route.match(new RegExp(`^/(${kindsPattern()})(?:/([^/]+))?$`));
   if (!match) return { name: "not-found" };
@@ -188,6 +189,32 @@ async function renderNotFound() {
   mainEl().innerHTML = await loadPage("not-found");
 }
 
+async function renderAdmin() {
+  const page = getPage("admin");
+  const main = mainEl();
+  if (!page) {
+    await renderNotFound();
+    return;
+  }
+
+  setPageTitle(page.title);
+  setMetaDescription(page.description);
+  main.innerHTML = interpolate(await loadPage("admin"), page);
+
+  const links = getSite().admin?.links || [];
+  fillSlot(
+    main,
+    "links",
+    links
+      .map((item) => {
+        if (!item?.href || !item?.label) return "";
+        return `<li><a href="${item.href}" rel="noopener noreferrer" target="_blank">${item.label}</a></li>`;
+      })
+      .filter(Boolean)
+      .join("")
+  );
+}
+
 export async function renderRoute() {
   const gen = ++renderGeneration;
   const parsed = parseRoute();
@@ -198,6 +225,8 @@ export async function renderRoute() {
   try {
     if (parsed.name === "home") {
       scrollId = await renderHome(parsed.scroll);
+    } else if (parsed.name === "admin") {
+      await renderAdmin();
     } else if (parsed.name === "index") {
       await renderIndex(parsed.kind);
     } else if (parsed.name === "doc") {

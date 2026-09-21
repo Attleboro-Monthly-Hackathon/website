@@ -881,6 +881,52 @@ content-index {
   margin-top: 1.25rem;
 }
 
+.admin-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid color-mix(in srgb, var(--mist) 65%, transparent);
+}
+
+.admin-links li {
+  margin: 0;
+}
+
+.admin-links a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 0.15rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--mist) 65%, transparent);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 560;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  text-decoration: none;
+  transition: background-color 180ms var(--ease), padding-left 180ms var(--ease);
+}
+
+.admin-links a::after {
+  content: "→";
+  color: var(--glow);
+  font-size: 1.2rem;
+  transition: transform 200ms var(--ease);
+}
+
+.admin-links a:hover,
+.admin-links a:focus-visible {
+  background: color-mix(in srgb, var(--leaf) 6%, transparent);
+  padding-left: 0.45rem;
+  color: var(--ink);
+}
+
+.admin-links a:hover::after,
+.admin-links a:focus-visible::after {
+  transform: translateX(0.25rem);
+}
+
 .page-hero h1 {
   margin: 0 0 0.75rem;
   font-family: var(--font-display);
