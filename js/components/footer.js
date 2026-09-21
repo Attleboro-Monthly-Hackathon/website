@@ -11,7 +11,12 @@ class SiteFooter extends HTMLElement {
       this,
       "explore",
       getSite()
-        .chrome.explore.map((item) => `<li><a href="${item.href}">${item.label}</a></li>`)
+        .chrome.explore.map((item) => {
+          const attrs = item.external
+            ? ` href="${item.href}" rel="noopener noreferrer" target="_blank"`
+            : ` href="${item.href}"`;
+          return `<li><a${attrs}>${item.label}</a></li>`;
+        })
         .join("")
     );
   }

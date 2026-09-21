@@ -8,8 +8,20 @@
       Build something small. Learn something new. Meet your neighbors.
     </p>
     <div class="hero__actions">
-      <a class="btn btn--primary" href="#/calendar">See the calendar</a>
-      <a class="btn btn--ghost" href="#/tutorials">Start with a tutorial</a>
+      <a
+        class="btn btn--primary"
+        href="{rsvpUrl}"
+        rel="noopener noreferrer"
+        target="_blank"
+        >{rsvpLabel}</a
+      >
+      <a
+        class="btn btn--ghost"
+        href="{discordUrl}"
+        rel="noopener noreferrer"
+        target="_blank"
+        >{discordLabel}</a
+      >
     </div>
   </div>
 </section>
@@ -49,6 +61,24 @@
         <dt>What to bring</dt>
         <dd>A laptop if you have one, headphones, and a project idea — or just curiosity.</dd>
       </div>
+      <div>
+        <dt>Sign up</dt>
+        <dd>
+          <a href="{rsvpUrl}" rel="noopener noreferrer" target="_blank"
+            >Fill out the meetup form</a
+          >
+          so organizers know you are coming.
+        </dd>
+      </div>
+      <div>
+        <dt>Discord</dt>
+        <dd>
+          <a href="{discordUrl}" rel="noopener noreferrer" target="_blank"
+            >{discordLabel}</a
+          >
+          to chat between meetups, ask questions, and share projects.
+        </dd>
+      </div>
     </dl>
   </div>
 </section>
@@ -60,7 +90,10 @@
       <h2 class="section__title" id="calendar-title">Upcoming dates</h2>
       <p class="section__lead">
         Browse the calendar for meetup days, theme announcements, and optional
-        workshops. Add events to your own calendar from the embed controls.
+        workshops.
+        <a href="{rsvpUrl}" rel="noopener noreferrer" target="_blank">{rsvpLabel}</a>
+        before you arrive, and subscribe with the ICS link below so dates stay on your
+        own calendar.
       </p>
     </div>
     <site-calendar class="reveal"></site-calendar>

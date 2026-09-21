@@ -4,8 +4,40 @@
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
       title="{calendarTitle}"
-      src="{googleCalendarEmbedUrl}"
+      src="{calendarEmbedUrl}"
     ></iframe>
+  </div>
+  <div class="calendar-panel__subscribe">
+    <h3 class="calendar-panel__subscribe-title">{calendarSubscribeHeading}</h3>
+    <p class="calendar-panel__subscribe-lead">{calendarSubscribeLead}</p>
+    <p>
+      <a
+        class="btn btn--solid"
+        href="{icsSubscribeUrl}"
+        rel="noopener noreferrer"
+        target="_blank"
+        >{calendarSubscribeLinkLabel}</a
+      >
+    </p>
+    <ol class="calendar-panel__howto">
+      <li>
+        <strong>Google Calendar</strong> — open Settings → Add calendar → From URL,
+        paste the
+        <a href="{icsSubscribeUrl}" rel="noopener noreferrer" target="_blank">ICS link</a>,
+        then Add calendar.
+      </li>
+      <li>
+        <strong>Apple Calendar</strong> — choose File → New Calendar Subscription
+        (or tap the
+        <a href="{icsWebcalUrl}">webcal link</a>
+        on iPhone/iPad) and paste the same address if asked.
+      </li>
+      <li>
+        <strong>Outlook</strong> — Add calendar → Subscribe from web, paste the
+        <a href="{icsSubscribeUrl}" rel="noopener noreferrer" target="_blank">ICS link</a>,
+        then import.
+      </li>
+    </ol>
   </div>
   <p class="calendar-panel__note">{calendarNote}</p>
 </div>

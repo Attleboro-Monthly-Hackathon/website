@@ -12,6 +12,9 @@ function navMarkup() {
   const route = currentRoute();
   return getSite()
     .nav.map((item) => {
+      if (item.external) {
+        return `<a href="${item.href}" rel="noopener noreferrer" target="_blank">${item.label}</a>`;
+      }
       const current = isCurrent(item, route);
       return `<a href="${item.href}" ${current ? 'aria-current="page"' : ""}>${item.label}</a>`;
     })

@@ -12,14 +12,23 @@
   "website": "https://attleborolibrary.org",
   "websiteLabel": "attleborolibrary.org",
   "contactEmail": "apl_ref@sailsinc.org",
-  "rsvpUrl": "#/calendar",
-  "googleCalendarEmbedUrl": "https://calendar.google.com/calendar/embed?src=en.usa%23holiday%40group.v.calendar.google.com&ctz=America%2FNew_York&mode=MONTH&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0",
+  "rsvpUrl": "https://docs.google.com/forms/d/e/1FAIpQLScjj62RFnBY8MYiOKSUocKTvy-7bh343ywpvkZUiDw0oz1MZA/viewform",
+  "rsvpLabel": "Sign up",
+  "discordUrl": "https://discord.gg/em9ujeYTzQ",
+  "discordLabel": "Join Discord",
+  "libcalCid": "21308",
+  "libcalBaseUrl": "https://attleborolibrary.libcal.com",
+  "icsSubscribeUrl": "{libcalBaseUrl}/ical_subscribe.php?src=p&cid={libcalCid}",
+  "icsWebcalUrl": "webcal://attleborolibrary.libcal.com/ical_subscribe.php?src=p&cid={libcalCid}",
+  "calendarEmbedUrl": "{libcalBaseUrl}/calendar?cid={libcalCid}",
   "nav": [
     { "href": "#/", "label": "Home", "match": "exact", "route": "/" },
     { "href": "#/calendar", "label": "Calendar", "match": "exact", "route": "/calendar" },
     { "href": "#/articles", "label": "Articles", "match": "prefix", "route": "/articles" },
     { "href": "#/themes", "label": "Themes", "match": "prefix", "route": "/themes" },
-    { "href": "#/tutorials", "label": "Tutorials", "match": "prefix", "route": "/tutorials" }
+    { "href": "#/tutorials", "label": "Tutorials", "match": "prefix", "route": "/tutorials" },
+    { "href": "{rsvpUrl}", "label": "{rsvpLabel}", "external": true },
+    { "href": "{discordUrl}", "label": "Discord", "external": true }
   ],
   "collections": {
     "articles": {
@@ -92,10 +101,15 @@
     "contactHeading": "Contact",
     "footerMeta": "A monthly makers’ meetup at the Attleboro Public Library.",
     "calendarTitle": "{name} calendar",
-    "calendarNote": "Calendar embed is configured in <code>data/site.json</code>. Replace the placeholder URL with your library’s Google Calendar embed link.",
+    "calendarNote": "Dates may shift around holidays — check here before you come. <a href=\"{rsvpUrl}\" rel=\"noopener noreferrer\" target=\"_blank\">{rsvpLabel}</a> so we know to expect you.",
+    "calendarSubscribeHeading": "Add to your calendar",
+    "calendarSubscribeLead": "This page embeds the same LibCal calendar as the ICS feed. Subscribe once and meetup dates will update automatically.",
+    "calendarSubscribeLinkLabel": "ICS subscribe link",
     "listArrow": "→",
     "backPrefix": "← ",
     "explore": [
+      { "href": "{rsvpUrl}", "label": "{rsvpLabel}", "external": true },
+      { "href": "{discordUrl}", "label": "{discordLabel}", "external": true },
       { "href": "#/articles", "label": "Articles" },
       { "href": "#/themes", "label": "Workshop ideas" },
       { "href": "#/tutorials", "label": "Tutorials" },
