@@ -17,6 +17,13 @@
       >
       <a
         class="btn btn--ghost"
+        href="{registerUrl}"
+        rel="noopener noreferrer"
+        target="_blank"
+        >{registerLabel}</a
+      >
+      <a
+        class="btn btn--ghost"
         href="{discordUrl}"
         rel="noopener noreferrer"
         target="_blank"
@@ -62,12 +69,23 @@
         <dd>A laptop if you have one, headphones, and a project idea — or just curiosity.</dd>
       </div>
       <div>
-        <dt>Sign up</dt>
+        <dt>Register</dt>
         <dd>
-          <a href="{rsvpUrl}" rel="noopener noreferrer" target="_blank"
-            >Fill out the meetup form</a
+          New here?
+          <a href="{registerUrl}" rel="noopener noreferrer" target="_blank"
+            >Fill out the registration form</a
           >
-          so organizers know you are coming.
+          once so organizers have your info on file.
+        </dd>
+      </div>
+      <div>
+        <dt>RSVP</dt>
+        <dd>
+          Coming to the next meetup?
+          <a href="{rsvpUrl}" rel="noopener noreferrer" target="_blank"
+            >Send a monthly RSVP</a
+          >
+          so we know to expect you.
         </dd>
       </div>
       <div>
@@ -92,8 +110,8 @@
         Browse the calendar for meetup days, theme announcements, and optional
         workshops.
         <a href="{rsvpUrl}" rel="noopener noreferrer" target="_blank">{rsvpLabel}</a>
-        before you arrive, and subscribe with the ICS link below so dates stay on your
-        own calendar.
+        for the session you plan to attend, and subscribe with the ICS link below so
+        dates stay on your own calendar.
       </p>
     </div>
     <site-calendar class="reveal"></site-calendar>

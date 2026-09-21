@@ -1,4 +1,4 @@
-import { applyConfigText } from "./config.js";
+import { applyConfigText, siteConfig } from "./config.js";
 
 const htmlCache = new Map();
 let catalogPromise;
@@ -83,3 +83,20 @@ export function itemEyebrow(item, collection) {
 export function findItem(catalog, kind, slug) {
   return (catalog[kind] || []).find((entry) => entry.slug === slug) || null;
 }
+
+/** GitHub edit URL for a catalog page’s source file in the website repo. */
+export function contentEditUrl(kind, item) {
+  const declared = typeof item?.sourcePath === "string" ? item.sourcePath.trim() : "";
+  const fallback =
+    kind && item?.slug ? `content/${kind}/${String(item.slug).replace(/^\/+|\/+$/g, "")}.html` : "";
+  const path = declared || fallback;
+  if (!path) return null;
+  if (!/\.(md|html?)$/i.test(path)) return null;
+
+  const repo = String(siteConfig.githubWebsiteUrl || "").replace(/\/$/, "");
+  const branch = siteConfig.githubBranch || "main";
+  if (!repo) return null;
+
+  return `${repo}/edit/${branch}/${path.replace(/^\/+/, "")}`;
+}
+

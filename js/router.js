@@ -1,6 +1,7 @@
 import { setMetaDescription, setPageTitle } from "./assets.js";
 import { bindConfig, getCollections, getPage, interpolate, siteConfig } from "./config.js";
 import {
+  contentEditUrl,
   findItem,
   itemEyebrow,
   loadCatalog,
@@ -154,6 +155,16 @@ async function renderDoc(kind, slug) {
     if (!banner.textContent.trim()) banner.remove();
   }
   fillSlot(main, "body", body);
+  fillSlot(
+    main,
+    "fix-typo",
+    (() => {
+      const editUrl = contentEditUrl(kind, item);
+      if (!editUrl) return "";
+      const label = siteConfig.fixTypoLabel || "Fix a typo";
+      return `<a href="${editUrl}" rel="noopener noreferrer" target="_blank">${label}</a>`;
+    })()
+  );
 }
 
 async function renderNotFound() {

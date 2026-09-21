@@ -591,44 +591,17 @@ article {
     inset 0 1px 0 color-mix(in srgb, var(--white) 35%, transparent),
     inset 0 14px 28px -20px var(--shadow),
     inset 0 -12px 24px -18px var(--shadow);
-  overflow-x: hidden;
-  overflow-y: scroll;
-  scrollbar-gutter: stable;
-  scrollbar-width: auto;
-  scrollbar-color: var(--leaf-deep) color-mix(in srgb, var(--paper) 55%, white);
-}
-
-.calendar-panel__frame::-webkit-scrollbar {
-  width: 0.9rem;
-}
-
-.calendar-panel__frame::-webkit-scrollbar-track {
-  background: color-mix(in srgb, var(--paper) 60%, white);
-  border-left: 1px solid color-mix(in srgb, var(--mist) 70%, var(--ink) 10%);
-}
-
-.calendar-panel__frame::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--leaf) 80%, white),
-    var(--leaf-deep)
-  );
-  border: 2px solid color-mix(in srgb, var(--paper) 60%, white);
-  border-radius: 0.35rem;
-  min-height: 3rem;
-}
-
-.calendar-panel__frame::-webkit-scrollbar-thumb:hover {
-  background: var(--leaf-deep);
+  overflow: hidden;
 }
 
 .calendar-panel__frame iframe {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
-  height: 110rem;
+  height: 100%;
   border: 0;
   background: var(--white);
-  pointer-events: auto;
 }
 
 .calendar-panel__note {
@@ -641,35 +614,70 @@ article {
 }
 
 .calendar-panel__subscribe {
-  padding: 1.15rem 1.1rem 1.25rem;
   border-top: 1px solid color-mix(in srgb, var(--mist) 60%, transparent);
   background: color-mix(in srgb, var(--white) 70%, var(--paper));
 }
 
+.calendar-panel__subscribe-summary {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.95rem 1.1rem;
+  cursor: pointer;
+  list-style: none;
+  color: var(--ink);
+}
+
+.calendar-panel__subscribe-summary::-webkit-details-marker {
+  display: none;
+}
+
+.calendar-panel__subscribe-summary::after {
+  content: "Show steps";
+  justify-self: start;
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: var(--leaf-deep);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
+.calendar-panel__subscribe[open] .calendar-panel__subscribe-summary::after {
+  content: "Hide steps";
+}
+
+.calendar-panel__subscribe-summary:hover .calendar-panel__subscribe-title,
+.calendar-panel__subscribe-summary:focus-visible .calendar-panel__subscribe-title {
+  color: var(--leaf-deep);
+}
+
 .calendar-panel__subscribe-title {
-  margin: 0 0 0.35rem;
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--ink);
 }
 
 .calendar-panel__subscribe-lead {
-  margin: 0 0 0.9rem;
+  font-size: 0.92rem;
   color: var(--ink-soft);
-  max-width: 38rem;
+  max-width: 40rem;
+}
+
+.calendar-panel__subscribe-body {
+  padding: 0 1.1rem 1.15rem;
 }
 
 .calendar-panel__howto {
-  margin: 1rem 0 0;
+  margin: 0.85rem 0 0;
   padding-left: 1.2rem;
   color: var(--ink-soft);
   font-size: 0.95rem;
 }
 
 .calendar-panel__howto li + li {
-  margin-top: 0.55rem;
+  margin-top: 0.45rem;
 }
 
 .calendar-panel__howto strong {
@@ -779,6 +787,16 @@ content-index {
 
 .content-back {
   margin: 2rem 0 0;
+}
+
+.fix-typo {
+  margin: 0.85rem 0 0;
+  font-size: 0.95rem;
+}
+
+.fix-typo a {
+  font-weight: 650;
+  color: var(--leaf-deep);
 }
 
 .page-hero h1 {
@@ -1005,10 +1023,6 @@ content-index {
 
   .calendar-panel__frame {
     height: 28rem;
-  }
-
-  .calendar-panel__frame iframe {
-    height: 96rem;
   }
 
   .hero {
