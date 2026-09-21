@@ -1,10 +1,15 @@
 <div class="calendar-panel">
+  <div class="calendar-panel__chrome">
+    <p class="calendar-panel__label">{calendarEmbedLabel}</p>
+    <p class="calendar-panel__hint">{calendarEmbedHint}</p>
+  </div>
   <div class="calendar-panel__frame">
     <iframe
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
       title="{calendarTitle}"
       src="{calendarEmbedUrl}"
+      scrolling="no"
     ></iframe>
   </div>
   <div class="calendar-panel__subscribe">

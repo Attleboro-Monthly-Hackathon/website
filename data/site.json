@@ -102,6 +102,8 @@
     "contactHeading": "Contact",
     "footerMeta": "A monthly makers’ meetup at the Attleboro Public Library.",
     "calendarTitle": "{name} calendar",
+    "calendarEmbedLabel": "LibCal embed",
+    "calendarEmbedHint": "Scroll inside this frame to browse filtered hackathon dates.",
     "calendarNote": "Dates may shift around holidays — check here before you come. <a href=\"{rsvpUrl}\" rel=\"noopener noreferrer\" target=\"_blank\">{rsvpLabel}</a> so we know to expect you.",
     "calendarSubscribeHeading": "Add to your calendar",
     "calendarSubscribeLead": "The embed is filtered to hackathon events. Subscribe with the ICS link for the full library calendar, or keep using the filtered view above.",
