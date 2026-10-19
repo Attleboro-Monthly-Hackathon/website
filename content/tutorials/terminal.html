@@ -1,0 +1,341 @@
+<p>The terminal is a text window where you type commands and the computer answers in text. It is the same idea as a file manager, except you name the folder instead of clicking it. This session’s goal is to get comfortable there, then use that comfort for two things almost every project needs: a <strong>shell script</strong> and a <strong>Git commit</strong>.</p>
+
+<p>You do not need to finish both tracks. Beginners should complete the beginner steps. If those already feel familiar, skip ahead to the advanced track and push one skill further.</p>
+
+<p>The command lists below build on the first-commands writeup from the <a href="#/tutorials/git">Git tutorial</a> and the “do one repetitive job” idea from <a href="#/themes/automate-your-life">Automate Your Life</a>. Work only inside a folder you create for practice.</p>
+
+<hr />
+
+<h2>Open a terminal</h2>
+
+<ul>
+  <li><strong>macOS</strong> — Open <em>Terminal</em> (Applications → Utilities), or the terminal built into VS Code or Cursor.</li>
+  <li><strong>Windows</strong> — Install <a href="https://git-scm.com/downloads" rel="noopener noreferrer" target="_blank">Git for Windows</a> and open <strong>Git Bash</strong>. The steps below assume Git Bash so they match macOS and Linux. PowerShell can navigate too, but bash scripts need Git Bash or WSL.</li>
+  <li><strong>Linux</strong> — Open the app named Terminal, Konsole, or GNOME Terminal. Ctrl+Alt+T works on many desktops.</li>
+</ul>
+
+<p>The line waiting for you is the <strong>prompt</strong>. It usually ends in <code>$</code> or <code>%</code>. You type after that and press Enter. A blinking cursor with no new prompt means a command is still running; Ctrl+C stops it.</p>
+
+<hr />
+
+<h2>How a command is shaped</h2>
+
+<p>Almost every line you type has the same parts:</p>
+
+<pre><code>command  argument  argument
+ls       -la       Documents</code></pre>
+
+<ul>
+  <li><strong>Command</strong> — The program to run (<code>ls</code>, <code>cd</code>, <code>git</code>).</li>
+  <li><strong>Arguments</strong> — Extra words that change what it does. Flags start with <code>-</code> or <code>--</code> (<code>-la</code>, <code>--oneline</code>).</li>
+  <li><strong>Working directory</strong> — The folder you are “in.” Commands act there unless you give them a path.</li>
+</ul>
+
+<p>Paths use <code>/</code> even on Windows Git Bash. <code>.</code> means “here,” <code>..</code> means “the parent folder,” and <code>~</code> means your home folder. Put quotes around names that contain spaces: <code>cd "My Documents"</code>.</p>
+
+<hr />
+
+<h2>Beginner track</h2>
+
+<p>Leave with three things: you can move around the disk, you ran a five-line script, and you made one Git commit. Do the steps in order. If a command prints an error, read the first line of the error before you retype anything.</p>
+
+<h3>1. See where you are</h3>
+
+<pre><code>pwd
+ls
+ls -la</code></pre>
+
+<ul>
+  <li><code>pwd</code> prints the current folder (print working directory).</li>
+  <li><code>ls</code> lists names in that folder.</li>
+  <li><code>ls -la</code> includes hidden files (names starting with <code>.</code>) and details such as size.</li>
+</ul>
+
+<h3>2. Make a practice folder and go inside it</h3>
+
+<pre><code>cd ~
+mkdir apl-terminal-practice
+cd apl-terminal-practice
+pwd</code></pre>
+
+<p><code>cd</code> changes directory. After this, <code>pwd</code> should end in <code>apl-terminal-practice</code>. Stay in this folder for the rest of the beginner track. <code>cd ..</code> steps up one folder; <code>cd ~</code> jumps home.</p>
+
+<h3>3. Create, read, copy, and remove a file</h3>
+
+<pre><code>echo "Hello from the terminal" &gt; notes.txt
+cat notes.txt
+cp notes.txt notes-copy.txt
+mv notes-copy.txt greeting.txt
+ls
+rm greeting.txt
+ls</code></pre>
+
+<ul>
+  <li><code>&gt;</code> sends output into a file and replaces whatever was there. <code>&gt;&gt;</code> adds to the end instead.</li>
+  <li><code>cat</code> prints a file.</li>
+  <li><code>cp</code> copies. <code>mv</code> renames or moves.</li>
+  <li><code>rm</code> deletes immediately. It does not go to the trash. Only remove files you created in this practice folder.</li>
+</ul>
+
+<h3>4. Ask the computer what a command does</h3>
+
+<pre><code>ls --help
+man ls</code></pre>
+
+<p><code>man</code> opens the manual. Press <kbd>q</kbd> to leave it. The up arrow recalls the previous command. Tab completes a folder or file name after you type the first few letters. <code>clear</code> wipes the screen without deleting files.</p>
+
+<h3>5. Write a tiny shell script</h3>
+
+<p>A shell script is a text file of commands the shell runs top to bottom. Create <code>hello.sh</code> in your practice folder (use any editor, or the <code>cat</code> trick below). The first line, the <em>shebang</em>, says “run this with bash.”</p>
+
+<pre><code>cat &gt; hello.sh &lt;&lt;'EOF'
+#!/usr/bin/env bash
+name="${1:-friend}"
+echo "Hello, $name."
+echo "You are in $(pwd)."
+EOF
+chmod +x hello.sh
+./hello.sh
+./hello.sh Ada</code></pre>
+
+<ul>
+  <li><code>chmod +x</code> marks the file as runnable.</li>
+  <li><code>./hello.sh</code> runs it. The <code>./</code> means “in this folder,” which is required for scripts you just wrote.</li>
+  <li><code>$1</code> is the first word you typed after the script name. If you omit it, the script uses <code>friend</code>.</li>
+</ul>
+
+<h3>6. Save that work with Git</h3>
+
+<p>These are the same first commands from the <a href="#/tutorials/git">Git tutorial</a>. Install Git first if <code>git --version</code> fails (<a href="https://git-scm.com/downloads" rel="noopener noreferrer" target="_blank">git-scm.com/downloads</a>).</p>
+
+<pre><code>git --version
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+git init
+git status
+git add hello.sh notes.txt
+git status
+git commit -m "Add a hello script and notes"
+git log --oneline
+git status</code></pre>
+
+<ul>
+  <li><code>git status</code> is the map. Run it whenever you are unsure.</li>
+  <li><code>git add</code> chooses what goes into the next snapshot. <code>git commit</code> saves that snapshot with a message about <em>why</em>.</li>
+  <li><code>git log --oneline</code> shows the history. You should see one commit.</li>
+</ul>
+
+<p>Pushing to GitHub is optional today. When you are ready, the <a href="#/themes/git-for-beginners">Git for Beginners</a> workshop covers a pull request on the Hello-World repo.</p>
+
+<h3>Beginner finish line</h3>
+
+<ul>
+  <li>You can explain what <code>pwd</code>, <code>ls</code>, and <code>cd</code> do.</li>
+  <li><code>./hello.sh</code> prints a greeting from your practice folder.</li>
+  <li><code>git log --oneline</code> shows your commit.</li>
+</ul>
+
+<hr />
+
+<h2>Advanced track</h2>
+
+<p>You already know how to move around. This track is about combining commands, writing a script that makes a decision, and reading Git history on purpose. Still work inside <code>~/apl-terminal-practice</code> (create it with the beginner step 2 if you skipped here).</p>
+
+<h3>1. Connect commands with pipes</h3>
+
+<p>A pipe (<code>|</code>) sends one command’s output into the next command’s input.</p>
+
+<pre><code>printf 'apple\npear\napricot\nplum\n' &gt; fruit.txt
+cat fruit.txt
+grep '^ap' fruit.txt
+wc -l fruit.txt
+sort fruit.txt | uniq
+cat fruit.txt | grep ap | wc -l</code></pre>
+
+<ul>
+  <li><code>grep</code> prints lines that match a pattern. <code>^ap</code> means “starts with ap.”</li>
+  <li><code>wc -l</code> counts lines.</li>
+  <li><code>sort</code> orders lines. <code>uniq</code> collapses neighbors that are identical, so sort first.</li>
+</ul>
+
+<p>Try the same idea on a real folder, without changing it:</p>
+
+<pre><code>ls -la ~ | head
+ls ~ | wc -l</code></pre>
+
+<h3>2. Find out which program you are running</h3>
+
+<pre><code>echo "$SHELL"
+which bash
+which git
+type ls
+echo "$PATH"</code></pre>
+
+<p><code>PATH</code> is the list of folders the shell searches when you type a command. <code>which</code> shows the file it found. If a tool is “not found,” it is usually missing from <code>PATH</code> or not installed — not a typo in the rest of your script.</p>
+
+<h3>3. Write a script with a check and a loop</h3>
+
+<p>This script lists regular files in the current folder and their extensions. It prints only. It does not rename or delete anything. That dry-run habit is the same safety rule as in <a href="#/themes/automate-your-life">Automate Your Life</a>.</p>
+
+<pre><code>cat &gt; list-files.sh &lt;&lt;'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+
+target="${1:-.}"
+if [[ ! -d "$target" ]]; then
+  echo "Not a folder: $target" &gt;&amp;2
+  exit 1
+fi
+
+shopt -s nullglob
+count=0
+for file in "$target"/*; do
+  if [[ -f "$file" ]]; then
+    base="${file##*/}"
+    ext="${base##*.}"
+    if [[ "$base" == "$ext" ]]; then
+      ext="(none)"
+    fi
+    echo "$ext	$base"
+    count=$((count + 1))
+  fi
+done
+echo "---"
+echo "$count file(s) in $target"
+EOF
+chmod +x list-files.sh
+./list-files.sh
+./list-files.sh ~
+./list-files.sh /this/does/not/exist</code></pre>
+
+<ul>
+  <li><code>set -euo pipefail</code> stops the script on errors, unset variables, and failed pipes. Turn it on in scripts you keep.</li>
+  <li><code>[[ ! -d ]]</code> checks “this is not a folder.” The message goes to stderr (<code>&gt;&amp;2</code>) and the script exits with status 1, which means failure.</li>
+  <li>The <code>for</code> loop visits each match of <code>"$target"/*</code>. Quotes matter when names contain spaces.</li>
+</ul>
+
+<p>Stretch: change the script so a second argument is an extension filter (<code>./list-files.sh . txt</code> prints only <code>.txt</code> files). Keep the dry-run. Do not add <code>rm</code> or <code>mv</code> until the printed plan looks right.</p>
+
+<h3>4. Read Git like a logbook</h3>
+
+<p>From the practice repo (run <code>git init</code> and make the beginner commit first if you do not have one):</p>
+
+<pre><code>echo "A second line" &gt;&gt; notes.txt
+git diff
+git add notes.txt
+git commit -m "Note what a pipe does"
+git log --oneline
+git show HEAD
+git checkout -b practice/pipes
+echo "branch note" &gt;&gt; notes.txt
+git add notes.txt
+git commit -m "Experiment on a branch"
+git log --oneline --graph --all
+git switch -</code></pre>
+
+<ul>
+  <li><code>git diff</code> shows unstaged edits. Read it before you commit.</li>
+  <li>A branch is a movable name for a commit. <code>practice/pipes</code> keeps the experiment off your first line of history.</li>
+  <li><code>git switch -</code> returns to the previous branch. <code>git switch</code> is the current spelling of <code>git checkout</code> for changing branches.</li>
+</ul>
+
+<p>Do not rewrite history that you have already pushed, and do not force-push to <code>main</code>. Merging and conflicts are covered in <a href="#/themes/git-for-beginners">Git for Beginners</a> and <a href="https://learngitbranching.js.org/" rel="noopener noreferrer" target="_blank">Learn Git Branching</a>.</p>
+
+<h3>5. Check the script before you trust it</h3>
+
+<p>Paste <code>list-files.sh</code> into <a href="https://www.shellcheck.net/" rel="noopener noreferrer" target="_blank">ShellCheck</a>, or install the <code>shellcheck</code> command and run <code>shellcheck list-files.sh</code>. Fix the warnings it prints. Then run the script on a folder of sample files and confirm the count matches <code>ls</code>.</p>
+
+<h3>Advanced finish line</h3>
+
+<ul>
+  <li>You can explain a pipe in one sentence and demonstrate <code>grep</code> plus <code>wc</code>.</li>
+  <li><code>list-files.sh</code> handles a missing folder without deleting anything.</li>
+  <li><code>git log --oneline --graph --all</code> shows at least two commits, and you can point at which branch each one is on.</li>
+</ul>
+
+<hr />
+
+<h2>Commands worth memorizing</h2>
+
+<div class="table-wrap"><table class="resource-table"><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody>
+<tr><td><code>pwd</code></td><td>Print the folder you are in.</td></tr>
+<tr><td><code>ls</code></td><td>List names here. <code>ls -la</code> shows details and hidden files.</td></tr>
+<tr><td><code>cd</code></td><td>Move to another folder. <code>cd ..</code> goes up. <code>cd ~</code> goes home.</td></tr>
+<tr><td><code>mkdir</code></td><td>Create a folder.</td></tr>
+<tr><td><code>cat</code></td><td>Print a file. <code>head</code> and <code>tail</code> print the start or end.</td></tr>
+<tr><td><code>cp</code> / <code>mv</code> / <code>rm</code></td><td>Copy, move or rename, delete. <code>rm</code> skips the trash.</td></tr>
+<tr><td><code>echo</code></td><td>Print text. <code>&gt;</code> writes a file; <code>&gt;&gt;</code> appends.</td></tr>
+<tr><td><code>grep</code></td><td>Print lines that match a pattern.</td></tr>
+<tr><td><code>|</code></td><td>Send one command’s output into the next command.</td></tr>
+<tr><td><code>chmod +x</code></td><td>Allow a script to be executed.</td></tr>
+<tr><td><code>man</code> / <code>--help</code></td><td>Read the manual for a command.</td></tr>
+</tbody></table></div>
+
+<h3>Git, once the files exist</h3>
+
+<pre><code>git status
+git add .
+git commit -m "Short message about why"
+git log --oneline
+git push
+git pull</code></pre>
+
+<p>Always run <code>git status</code> when unsure. What it prints is the map of where you are. <code>git add .</code> stages everything in this folder, including files you may not have meant to save — <code>git status</code> before <code>git commit</code> catches that.</p>
+
+<hr />
+
+<h2>Habits that prevent bad afternoons</h2>
+
+<ul>
+  <li>Practice in a folder you created, not in your home directory and not in a system folder.</li>
+  <li>Read a command before you press Enter, especially if it contains <code>rm</code>, <code>sudo</code>, or a pasted <code>curl</code>.</li>
+  <li>Prefer a script that prints the plan, then a second run that changes files.</li>
+  <li>Commit small. A message like “Add hello script” is useful; “update” is not.</li>
+  <li>Ctrl+C cancels a running command. Closing the window does not undo <code>rm</code>.</li>
+</ul>
+
+<hr />
+
+<h2>Official docs and short references</h2>
+
+<div class="table-wrap"><table class="resource-table"><thead><tr><th>Resource</th><th>Link</th></tr></thead><tbody>
+<tr><td>MDN — Command line crash course</td><td><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Environment_setup/Command_line" rel="noopener noreferrer" target="_blank">https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Environment_setup/Command_line</a></td></tr>
+<tr><td>Ubuntu — The Linux command line for beginners</td><td><a href="https://ubuntu.com/tutorials/command-line-for-beginners" rel="noopener noreferrer" target="_blank">https://ubuntu.com/tutorials/command-line-for-beginners</a></td></tr>
+<tr><td>GNU Bash manual</td><td><a href="https://www.gnu.org/software/bash/manual/" rel="noopener noreferrer" target="_blank">https://www.gnu.org/software/bash/manual/</a></td></tr>
+<tr><td>Learn Bash in Y Minutes</td><td><a href="https://learnxinyminutes.com/bash/" rel="noopener noreferrer" target="_blank">https://learnxinyminutes.com/bash/</a></td></tr>
+<tr><td>explainshell (break a command apart)</td><td><a href="https://explainshell.com/" rel="noopener noreferrer" target="_blank">https://explainshell.com/</a></td></tr>
+<tr><td>tldr pages (examples first)</td><td><a href="https://tldr.sh/" rel="noopener noreferrer" target="_blank">https://tldr.sh/</a></td></tr>
+</tbody></table></div>
+
+<hr />
+
+<h2>Go further</h2>
+
+<div class="table-wrap"><table class="resource-table"><thead><tr><th>Resource</th><th>Link</th></tr></thead><tbody>
+<tr><td>The Missing Semester — Shell tools and scripting</td><td><a href="https://missing.csail.mit.edu/2020/shell-tools/" rel="noopener noreferrer" target="_blank">https://missing.csail.mit.edu/2020/shell-tools/</a></td></tr>
+<tr><td>The Missing Semester — Command-line environment</td><td><a href="https://missing.csail.mit.edu/2020/command-line/" rel="noopener noreferrer" target="_blank">https://missing.csail.mit.edu/2020/command-line/</a></td></tr>
+<tr><td>ShellCheck</td><td><a href="https://www.shellcheck.net/" rel="noopener noreferrer" target="_blank">https://www.shellcheck.net/</a></td></tr>
+<tr><td>Pro Git — Getting Started</td><td><a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control" rel="noopener noreferrer" target="_blank">https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control</a></td></tr>
+<tr><td>Pro Git — Git Basics</td><td><a href="https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository" rel="noopener noreferrer" target="_blank">https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository</a></td></tr>
+<tr><td>Learn Git Branching</td><td><a href="https://learngitbranching.js.org/" rel="noopener noreferrer" target="_blank">https://learngitbranching.js.org/</a></td></tr>
+</tbody></table></div>
+
+<hr />
+
+<h2>Other resources</h2>
+
+<div class="table-wrap"><table class="resource-table"><thead><tr><th>Kind</th><th>Link</th></tr></thead><tbody>
+<tr><td>Wikipedia — Command-line interface</td><td><a href="https://en.wikipedia.org/wiki/Command-line_interface" rel="noopener noreferrer" target="_blank">https://en.wikipedia.org/wiki/Command-line_interface</a></td></tr>
+<tr><td>Wikipedia — Shell (computing)</td><td><a href="https://en.wikipedia.org/wiki/Shell_(computing)" rel="noopener noreferrer" target="_blank">https://en.wikipedia.org/wiki/Shell_(computing)</a></td></tr>
+<tr><td>Wikipedia — Bash</td><td><a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)" rel="noopener noreferrer" target="_blank">https://en.wikipedia.org/wiki/Bash_(Unix_shell)</a></td></tr>
+<tr><td>Wikipedia — Pipeline (Unix)</td><td><a href="https://en.wikipedia.org/wiki/Pipeline_(Unix)" rel="noopener noreferrer" target="_blank">https://en.wikipedia.org/wiki/Pipeline_(Unix)</a></td></tr>
+<tr><td>Git cheat sheet (GitHub education)</td><td><a href="https://education.github.com/git-cheat-sheet-education.pdf" rel="noopener noreferrer" target="_blank">https://education.github.com/git-cheat-sheet-education.pdf</a></td></tr>
+</tbody></table></div>
+
+<h3>Related on this site</h3>
+
+<ul>
+  <li><a href="#/tutorials/git">Git tutorial</a> — install notes, practice games, and the same first commands.</li>
+  <li><a href="#/themes/git-for-beginners">Git for Beginners</a> — branches, pull requests, and a live meetup flow.</li>
+  <li><a href="#/themes/automate-your-life">Automate Your Life</a> — when the job outgrows a short bash script, do it in Python.</li>
+</ul>

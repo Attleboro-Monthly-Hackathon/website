@@ -129,6 +129,14 @@
   ],
   "tutorials": [
     {
+      "slug": "terminal",
+      "title": "Using the Terminal",
+      "level": "Tools",
+      "summary": "Navigate folders, write a small shell script, and make a Git commit — beginner and advanced tracks.",
+      "lede": "This session’s goal. Pick the beginner track or the advanced track and work the steps in order.",
+      "sourcePath": "content/tutorials/terminal.html"
+    },
+    {
       "slug": "html",
       "title": "HTML",
       "level": "Web",
@@ -207,6 +215,14 @@
       "summary": "Speed and memory safety without a garbage collector \u2014 rustup, cargo, and The Book.",
       "lede": "Rustlings is the community koan: fix small exercises until they compile.",
       "sourcePath": "content/tutorials/rust.html"
+    },
+    {
+      "slug": "wordpress-pages",
+      "title": "Writing WordPress Pages",
+      "level": "Web",
+      "summary": "Create, edit, and publish pages in the block editor \u2014 hierarchy, menus, and clear content.",
+      "lede": "Pages vs posts, the block editor, and how to ship an About or Hours page without fighting the CMS.",
+      "sourcePath": "content/tutorials/wordpress-pages.html"
     }
   ]
 }

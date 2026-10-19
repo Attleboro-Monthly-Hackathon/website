@@ -38,9 +38,9 @@
   },
   "motd": {
     "enabled": true,
-    "text": "The September hackathon will be about web development",
-    "href": "#/themes/build-a-website",
-    "linkLabel": "See the workshop idea"
+    "text": "This session’s goal is the terminal: navigate, write a shell script, and make a Git commit",
+    "href": "#/tutorials/terminal",
+    "linkLabel": "Open the tutorial"
   },
   "libcalCid": "21308",
   "libcalBaseUrl": "https://attleborolibrary.libcal.com",

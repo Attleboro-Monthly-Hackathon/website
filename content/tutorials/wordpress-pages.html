@@ -1,0 +1,235 @@
+<p>WordPress powers a huge share of the web—including many library, school, and nonprofit sites. <strong>Pages</strong> are the long-lived parts of a site (About, Hours, Events, Contact). This guide walks you through creating and editing them in the block editor, with curated practice links at the end.</p>
+
+<hr />
+
+<h2>Pages vs posts (the mental model)</h2>
+
+<p>WordPress has two main content types. Mixing them up is the most common beginner trip-up:</p>
+
+<ul>
+  <li><strong>Pages</strong> — Evergreen content. They live in a hierarchy (About → Staff), often show up in menus, and do <em>not</em> appear in the blog feed by default.</li>
+  <li><strong>Posts</strong> — Time-stamped items (news, announcements). They use categories and tags and show up in reverse-chronological lists.</li>
+</ul>
+
+<p>Rule of thumb: if it still matters next year without a date in the title, make a <strong>page</strong>. If it’s “this week’s program update,” make a <strong>post</strong>.</p>
+
+<hr />
+
+<h2>Before you start</h2>
+
+<p>You need a WordPress site you can log into, plus a role that can edit pages (Editor or Administrator is typical). Options for practice:</p>
+
+<ul>
+  <li>A local install (Local, Docker, or XAMPP + WordPress)</li>
+  <li>A free WordPress.com site (features differ slightly from self-hosted)</li>
+  <li>A staging site your organization already uses</li>
+</ul>
+
+<p>Always prefer a <strong>staging</strong> or practice site over editing a live public homepage until you’re comfortable.</p>
+
+<hr />
+
+<h2>Create your first page</h2>
+
+<ol>
+  <li>Log in to the admin dashboard (usually <code>yoursite.org/wp-admin</code>).</li>
+  <li>In the left sidebar: <strong>Pages → Add New</strong>.</li>
+  <li>Type a clear title at the top (e.g. “Hours &amp; Location”). The title becomes the default URL slug.</li>
+  <li>Add content with <strong>blocks</strong> (see below)—start with a short paragraph, then a heading, then more paragraphs or a list.</li>
+  <li>Open the right-hand <strong>Page</strong> settings (gear / sidebar) for status, parent, template, and featured image.</li>
+  <li>Click <strong>Save draft</strong>, then <strong>Preview</strong>, then <strong>Publish</strong> when it looks right.</li>
+</ol>
+
+<p>You can also create pages from the Site Editor on block themes: <strong>Appearance → Editor → Pages</strong>, then the plus icon. Content editing works the same; you’re just seeing the page inside its template.</p>
+
+<hr />
+
+<h2>The block editor (Gutenberg)</h2>
+
+<p>Since WordPress 5.0, pages are built from <strong>blocks</strong>—paragraphs, headings, images, buttons, columns, and more—stacked like Lego. You do not need to write HTML to publish a solid page (though you can drop into a Custom HTML block when you want to).</p>
+
+<h3>Core workspace</h3>
+
+<ul>
+  <li><strong>Canvas</strong> — The middle of the screen; click and type.</li>
+  <li><strong>Inserter (+)</strong> — Search and add blocks, patterns, or media.</li>
+  <li><strong>List View</strong> — Outline of every block; great for reordering and nested layouts.</li>
+  <li><strong>Block settings</strong> — Right sidebar options for the selected block (alignment, color, typography).</li>
+  <li><strong>Page / Post settings</strong> — Right sidebar for the whole page (status, slug, parent, template).</li>
+</ul>
+
+<h3>Everyday block moves</h3>
+
+<ul>
+  <li>Press <strong>Enter</strong> in a paragraph to start a new block; use the <strong>+</strong> or type <code>/</code> to pick a block type by name.</li>
+  <li>Select a block, then use the toolbar to transform it (e.g. paragraph → heading), align it, or move it up/down.</li>
+  <li>Use <strong>List View</strong> to drag blocks—safer than hunting tiny handles on a long page.</li>
+  <li><strong>Patterns</strong> are pre-built sections (hero, FAQ, call-to-action). Insert one, then swap the placeholder text and images for yours.</li>
+</ul>
+
+<h3>Blocks you’ll use constantly</h3>
+
+<div class="table-wrap"><table class="resource-table"><thead><tr><th>Block</th><th>What it’s for</th></tr></thead><tbody>
+<tr><td>Paragraph</td><td>Body copy. Keep paragraphs short on the web.</td></tr>
+<tr><td>Heading</td><td>Structure (<code>H2</code>, then <code>H3</code>). Don’t skip levels just for styling.</td></tr>
+<tr><td>List</td><td>Steps, hours, bullet points—easier to scan than a wall of text.</td></tr>
+<tr><td>Image</td><td>Photos and graphics. Always set alt text that describes the image’s meaning.</td></tr>
+<tr><td>Buttons</td><td>One clear call to action (“Register”, “Get a library card”).</td></tr>
+<tr><td>Columns / Group / Row</td><td>Side-by-side layouts and wrapping related blocks.</td></tr>
+<tr><td>Spacer / Separator</td><td>Breathing room—use sparingly so the page doesn’t feel sparse.</td></tr>
+<tr><td>Embed</td><td>YouTube, maps, social posts—paste a URL and WordPress embeds it.</td></tr>
+<tr><td>Table</td><td>True tabular data (schedules). Prefer lists when you’re not comparing columns.</td></tr>
+</tbody></table></div>
+
+<hr />
+
+<h2>Write content people can actually use</h2>
+
+<p>A good WordPress page is mostly clear writing and hierarchy—not fancy layout.</p>
+
+<ul>
+  <li><strong>Lead with the answer.</strong> Hours, address, and “how do I…?” belong near the top.</li>
+  <li><strong>One job per page.</strong> “Hours &amp; Location” and “Meeting Room Policies” can be separate pages linked from a parent “Visit” page.</li>
+  <li><strong>Headings as a map.</strong> Skim your List View: if the outline doesn’t make sense, fix the headings before you polish colors.</li>
+  <li><strong>Links with honest labels.</strong> Prefer “Download the program PDF” over “click here.”</li>
+  <li><strong>Images with purpose.</strong> Compress large photos before upload; WordPress can resize, but huge originals slow editors and visitors.</li>
+</ul>
+
+<hr />
+
+<h2>Page settings that matter</h2>
+
+<h3>Status &amp; visibility</h3>
+
+<ul>
+  <li><strong>Draft</strong> — Only editors see it; safe while you’re writing.</li>
+  <li><strong>Pending review</strong> — Ready for someone else to approve (if your workflow uses it).</li>
+  <li><strong>Published</strong> — Live (or scheduled) for the public.</li>
+  <li><strong>Private / password-protected</strong> — Limited access; useful for staff-only notes, not for general secrets.</li>
+</ul>
+
+<h3>Permalink (slug)</h3>
+
+<p>The slug is the URL piece after your domain, e.g. <code>/hours/</code>. Edit it under page settings or via Quick Edit on the Pages list. Keep it short, lowercase, and hyphenated. Change carefully after a page is linked from menus or printed materials—broken links confuse patrons.</p>
+
+<h3>Parent page &amp; order</h3>
+
+<p>Set a <strong>Parent</strong> to nest pages: Visit → Hours, Visit → Parking. WordPress can show this hierarchy in menus and breadcrumbs (theme-dependent). <strong>Order</strong> is a number used by some themes and menus when sorting siblings—lower numbers often appear first.</p>
+
+<h3>Featured image &amp; excerpt</h3>
+
+<p>A featured image is the thumbnail themes use in cards, headers, or social previews. An excerpt is a short blurb for listings. Not every theme uses them on pages; check your theme’s docs or Preview with and without one.</p>
+
+<h3>Templates</h3>
+
+<p>Some themes offer page templates (full width, no sidebar, landing). Pick the template that matches the job—don’t force a blog-sidebar layout onto a marketing-style landing page.</p>
+
+<hr />
+
+<h2>Menus: how visitors find your page</h2>
+
+<p>Publishing a page does <strong>not</strong> automatically put it in the site navigation. After you publish:</p>
+
+<ol>
+  <li>Go to <strong>Appearance → Menus</strong> (classic) or edit the Navigation block in the Site Editor (block themes).</li>
+  <li>Add your page to the menu, nest it under a parent item if needed, and save.</li>
+  <li>Preview the front of the site on a phone-width window—menus behave differently on small screens.</li>
+</ol>
+
+<hr />
+
+<h2>Preview, publish, revise</h2>
+
+<ol>
+  <li><strong>Preview</strong> in a new tab before first publish.</li>
+  <li><strong>Publish</strong> when the content is accurate—not when the design is “perfect.”</li>
+  <li>Revisit later via <strong>Pages → All Pages</strong>; use Quick Edit for slug, parent, and status without opening the full editor.</li>
+  <li>If something breaks the layout, open List View and remove or regroup the last blocks you added—nested Groups and Columns are usually the culprit.</li>
+</ol>
+
+<hr />
+
+<h2>Accessibility quick checks</h2>
+
+<ul>
+  <li>Use real heading levels, not bold paragraphs pretending to be headings.</li>
+  <li>Alt text for meaningful images; empty/decorative images should be marked decorative when the UI allows.</li>
+  <li>Don’t rely on color alone (“items in red are closed”).</li>
+  <li>Ensure button and link text makes sense out of context.</li>
+  <li>Check contrast if you override theme colors.</li>
+</ul>
+
+<hr />
+
+<h2>Handy keyboard shortcuts</h2>
+
+<pre><code>/          Open block inserter (in an empty paragraph)
+Ctrl/Cmd+Z Undo
+Ctrl/Cmd+S Save draft
+Shift+Alt+O Toggle List View (often)
+Enter      New block after current
+</code></pre>
+
+<p>Shortcuts vary slightly by OS and WordPress version—open the editor’s options menu (⋮) → <strong>Keyboard shortcuts</strong> for the live list.</p>
+
+<hr />
+
+<h2>Official homepage / docs</h2>
+
+<div class="table-wrap"><table class="resource-table"><thead><tr><th>Resource</th><th>Link</th></tr></thead><tbody>
+<tr><td>WordPress.org</td><td><a href="https://wordpress.org/" rel="noopener noreferrer" target="_blank">https://wordpress.org/</a></td></tr>
+<tr><td>Create pages (docs)</td><td><a href="https://wordpress.org/documentation/article/create-pages/" rel="noopener noreferrer" target="_blank">https://wordpress.org/documentation/article/create-pages/</a></td></tr>
+<tr><td>Block editor overview</td><td><a href="https://wordpress.org/documentation/article/wordpress-block-editor/" rel="noopener noreferrer" target="_blank">https://wordpress.org/documentation/article/wordpress-block-editor/</a></td></tr>
+<tr><td>Site Editor — Pages</td><td><a href="https://wordpress.org/documentation/article/site-editor-pages/" rel="noopener noreferrer" target="_blank">https://wordpress.org/documentation/article/site-editor-pages/</a></td></tr>
+<tr><td>Learn WordPress (free courses)</td><td><a href="https://learn.wordpress.org/" rel="noopener noreferrer" target="_blank">https://learn.wordpress.org/</a></td></tr>
+<tr><td>WordPress Developer Resources</td><td><a href="https://developer.wordpress.org/" rel="noopener noreferrer" target="_blank">https://developer.wordpress.org/</a></td></tr>
+</tbody></table></div>
+
+<hr />
+
+<h2>Hands-on practice</h2>
+
+<p>WordPress doesn’t have classic “koans.” These sandboxes and lessons fill the same role:</p>
+
+<div class="table-wrap"><table class="resource-table"><thead><tr><th>Resource</th><th>Link</th></tr></thead><tbody>
+<tr><td>Learn WordPress — Creating posts and pages</td><td><a href="https://learn.wordpress.org/lesson/creating-posts-and-pages-with-the-wordpress-block-editor/" rel="noopener noreferrer" target="_blank">https://learn.wordpress.org/lesson/creating-posts-and-pages-with-the-wordpress-block-editor/</a></td></tr>
+<tr><td>Learn WordPress — Editing pages in the Site Editor</td><td><a href="https://learn.wordpress.org/lesson/editing-pages-inside-the-site-editor/" rel="noopener noreferrer" target="_blank">https://learn.wordpress.org/lesson/editing-pages-inside-the-site-editor/</a></td></tr>
+<tr><td>WordPress Playground (try WP in the browser)</td><td><a href="https://playground.wordpress.net/" rel="noopener noreferrer" target="_blank">https://playground.wordpress.net/</a></td></tr>
+<tr><td>Local (desktop local sites)</td><td><a href="https://localwp.com/" rel="noopener noreferrer" target="_blank">https://localwp.com/</a></td></tr>
+</tbody></table></div>
+
+<h3>A small practice page</h3>
+
+<ol>
+  <li>Create a page titled “Visit Us.”</li>
+  <li>Add an <code>H2</code> “Hours,” a short list of weekday hours, an <code>H2</code> “Address,” and a paragraph with a made-up street address.</li>
+  <li>Add a Buttons block linking to your library’s real homepage (or <code>#</code> for practice).</li>
+  <li>Set a parent page (or create “About” and nest “Visit Us” under it).</li>
+  <li>Save draft → Preview → Publish → add the page to a menu.</li>
+</ol>
+
+<hr />
+
+<h2>Tutorials</h2>
+
+<div class="table-wrap"><table class="resource-table"><thead><tr><th>Resource</th><th>Link</th></tr></thead><tbody>
+<tr><td>WordPress.com — Pages support</td><td><a href="https://wordpress.com/support/pages/" rel="noopener noreferrer" target="_blank">https://wordpress.com/support/pages/</a></td></tr>
+<tr><td>WordPress.com — Block editor</td><td><a href="https://wordpress.com/support/wordpress-editor/" rel="noopener noreferrer" target="_blank">https://wordpress.com/support/wordpress-editor/</a></td></tr>
+<tr><td>MDN — HTML structure (helps when you peek under the hood)</td><td><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML" rel="noopener noreferrer" target="_blank">https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML</a></td></tr>
+<tr><td>WebAIM contrast checker</td><td><a href="https://webaim.org/resources/contrastchecker/" rel="noopener noreferrer" target="_blank">https://webaim.org/resources/contrastchecker/</a></td></tr>
+</tbody></table></div>
+
+<hr />
+
+<h2>Other resources</h2>
+
+<div class="table-wrap"><table class="resource-table"><thead><tr><th>Kind</th><th>Link</th></tr></thead><tbody>
+<tr><td>Wikipedia — WordPress</td><td><a href="https://en.wikipedia.org/wiki/WordPress" rel="noopener noreferrer" target="_blank">https://en.wikipedia.org/wiki/WordPress</a></td></tr>
+<tr><td>Wikipedia — Content management system</td><td><a href="https://en.wikipedia.org/wiki/Content_management_system" rel="noopener noreferrer" target="_blank">https://en.wikipedia.org/wiki/Content_management_system</a></td></tr>
+<tr><td>Full block reference (docs)</td><td><a href="https://wordpress.org/documentation/article/blocks-list/" rel="noopener noreferrer" target="_blank">https://wordpress.org/documentation/article/blocks-list/</a></td></tr>
+<tr><td>Accessibility — HTML basics (MDN)</td><td><a href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML" rel="noopener noreferrer" target="_blank">https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML</a></td></tr>
+</tbody></table></div>
+
+<h3>Related on this site</h3>
+
+<p>Warm up on structure and styling with <a href="#/tutorials/html">HTML</a> and <a href="#/tutorials/css">CSS</a>, or ship a non-WordPress page in the <a href="#/themes/build-a-website">Build a Website</a> workshop. Library-flavored project ideas live under <a href="#/themes/library-tech">Library Tech</a>.</p>
