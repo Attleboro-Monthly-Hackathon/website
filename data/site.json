@@ -38,9 +38,9 @@
   },
   "motd": {
     "enabled": true,
-    "text": "This session’s goal is the terminal: navigate, write a shell script, and make a Git commit",
-    "href": "#/tutorials/terminal",
-    "linkLabel": "Open the tutorial"
+    "text": "This session: Google Sheets — start with a terminal refresher, then build a useful spreadsheet",
+    "href": "#/tutorials/google-sheets",
+    "linkLabel": "Open the agenda"
   },
   "libcalCid": "21308",
   "libcalBaseUrl": "https://attleborolibrary.libcal.com",

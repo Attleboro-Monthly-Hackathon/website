@@ -133,7 +133,7 @@
       "title": "Using the Terminal",
       "level": "Tools",
       "summary": "Navigate folders, write a small shell script, and make a Git commit — beginner and advanced tracks.",
-      "lede": "This session’s goal. Pick the beginner track or the advanced track and work the steps in order.",
+      "lede": "Last session’s focus. Pick the beginner track or the advanced track and work the steps in order — we refresh this at the start of Sheets night.",
       "sourcePath": "content/tutorials/terminal.html"
     },
     {
@@ -223,6 +223,14 @@
       "summary": "Create, edit, and publish pages in the block editor \u2014 hierarchy, menus, and clear content.",
       "lede": "Pages vs posts, the block editor, and how to ship an About or Hours page without fighting the CMS.",
       "sourcePath": "content/tutorials/wordpress-pages.html"
+    },
+    {
+      "slug": "google-sheets",
+      "title": "Google Sheets",
+      "level": "Tools",
+      "summary": "Spreadsheets in the browser: formulas, filters, charts, and sharing for library and everyday work.",
+      "lede": "This session\u2019s goal. Agenda opens with a terminal refresher, then rows, formulas, and a sheet you can share.",
+      "sourcePath": "content/tutorials/google-sheets.html"
     }
   ]
 }

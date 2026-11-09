@@ -1,0 +1,155 @@
+<p>Google Sheets is a spreadsheet that lives in the browser. You can share it with a link, edit it with others at the same time, and use formulas the same way you would in Excel—without installing anything. This session’s goal is to leave with one useful sheet you understand well enough to keep building on.</p>
+
+<p>You need a free Google account. Work in a practice spreadsheet you create tonight; do not put real patron data or private library records in a shared demo sheet.</p>
+
+<hr />
+
+<h2>Session agenda</h2>
+
+<p>Tonight’s meetup follows this order. Stay with the group for the refresher, then work the Sheets steps at your own pace.</p>
+
+<ol>
+  <li><strong>Refresher — last session (terminal, shell scripting, and Git)</strong> — Reopen a terminal, <code>cd</code> into a practice folder, run <code>pwd</code> / <code>ls</code>, glance at a tiny script, and confirm you still remember <code>git status</code> → add → commit. Use the <a href="#/tutorials/terminal">terminal tutorial</a> if anything feels fuzzy.</li>
+  <li><strong>Sheets mental model</strong> — Workbooks, sheets, cells, ranges, and why formulas start with <code>=</code>.</li>
+  <li><strong>Build a small table</strong> — Headers, data entry, formatting, freeze the header row, basic filters.</li>
+  <li><strong>Formulas that earn their keep</strong> — <code>SUM</code>, <code>AVERAGE</code>, <code>COUNTIF</code>, <code>IF</code>, and a simple <code>VLOOKUP</code> or <code>XLOOKUP</code>.</li>
+  <li><strong>Share and stretch</strong> — Link sharing, a chart, optional <code>QUERY</code> / <code>IMPORTRANGE</code>, or open project time.</li>
+</ol>
+
+<hr />
+
+<h2>Open Google Sheets</h2>
+
+<ul>
+  <li>Go to <a href="https://sheets.google.com/" rel="noopener noreferrer" target="_blank">sheets.google.com</a> and sign in.</li>
+  <li>Click <strong>Blank spreadsheet</strong> (or File → New → Spreadsheet).</li>
+  <li>Click the title at the top and name it something clear, e.g. <code>APL practice — event headcount</code>.</li>
+</ul>
+
+<p>A <strong>workbook</strong> is the whole file. Tabs at the bottom are individual <strong>sheets</strong>. Each box is a <strong>cell</strong>; cells have addresses like <code>A1</code> (column letter + row number). A <strong>range</strong> is a block such as <code>A1:B10</code>.</p>
+
+<hr />
+
+<h2>Beginner track</h2>
+
+<p>Leave with a tidy table, two or three formulas, a frozen header, and a share link you control.</p>
+
+<h3>1. Make a useful table</h3>
+
+<p>In row 1, enter headers. Example for a meetup sign-in sheet:</p>
+
+<div class="table-wrap"><table class="resource-table"><thead><tr><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead><tbody>
+<tr><td>Name</td><td>Role</td><td>RSVP</td><td>Checked in?</td></tr>
+</tbody></table></div>
+
+<p>Fill a few sample rows (made-up names are fine). Select the header row → <strong>View → Freeze → 1 row</strong> so headers stay visible while you scroll. Select the data → <strong>Data → Create a filter</strong> to sort or filter by column.</p>
+
+<ul>
+  <li>Bold the header row; keep body text plain.</li>
+  <li>Use <strong>Format → Number</strong> when a column is dates or currency—don’t type <code>$</code> by hand if you can avoid it.</li>
+  <li>One fact per column. Don’t combine “Ada / beginner / yes” in a single cell.</li>
+</ul>
+
+<h3>2. Totals and counts</h3>
+
+<p>Below your table (or off to the side), try:</p>
+
+<pre><code>=COUNTA(A2:A50)
+=COUNTIF(D2:D50, "Yes")
+=SUM(E2:E50)</code></pre>
+
+<ul>
+  <li><code>COUNTA</code> counts non-empty cells (good for “how many names?”).</li>
+  <li><code>COUNTIF</code> counts cells that match a condition.</li>
+  <li><code>SUM</code> adds numbers. Put quantities or dollar amounts in their own column first.</li>
+</ul>
+
+<p>Press Enter after a formula. If you see <code>#ERROR!</code> or <code>#VALUE!</code>, click the cell and read the message—Sheets usually points at the problem range.</p>
+
+<h3>3. Decisions with IF</h3>
+
+<pre><code>=IF(D2="Yes", "Here", "Not yet")</code></pre>
+
+<p>Drag the fill handle (small square at the cell’s corner) down the column to copy the formula. Relative references like <code>D2</code> update per row; use <code>$D$2</code> when you want a reference to stay fixed.</p>
+
+<h3>4. Share safely</h3>
+
+<ol>
+  <li>Click <strong>Share</strong>.</li>
+  <li>Prefer “anyone with the link” only for practice sheets with fake data.</li>
+  <li>Use <strong>Viewer</strong> for read-only, <strong>Commenter</strong> for feedback, <strong>Editor</strong> only for people who should change cells.</li>
+</ol>
+
+<hr />
+
+<h2>Advanced track</h2>
+
+<p>If the beginner steps already feel familiar, push further with lookups, charts, and sheet-to-sheet pulls.</p>
+
+<h3>1. Lookups</h3>
+
+<p>Keep a small reference table on a second tab (e.g. role → suggested table). Then:</p>
+
+<pre><code>=XLOOKUP(B2, Roles!A:A, Roles!B:B, "Unknown")</code></pre>
+
+<p>If <code>XLOOKUP</code> isn’t available in your account, <code>VLOOKUP</code> still works when the key is in the leftmost column of the lookup range.</p>
+
+<h3>2. QUERY for quick summaries</h3>
+
+<pre><code>=QUERY(A1:D50, "select C, count(A) where C is not null group by C label count(A) 'Count'", 1)</code></pre>
+
+<p><code>QUERY</code> uses a mini SQL-like language inside the sheet—great for pivot-style counts without a full pivot table UI.</p>
+
+<h3>3. Chart one question</h3>
+
+<ol>
+  <li>Select the summary range (categories + counts).</li>
+  <li><strong>Insert → Chart</strong>.</li>
+  <li>Pick a bar or pie chart; edit the title so it states the question (“RSVPs by type”), not just “Chart 1.”</li>
+</ol>
+
+<h3>4. Pull from another workbook</h3>
+
+<pre><code>=IMPORTRANGE("https://docs.google.com/spreadsheets/d/FILE_ID/edit", "Sheet1!A1:D50")</code></pre>
+
+<p>You must allow access the first time. Prefer <code>IMPORTRANGE</code> for living copies of a source of truth—not for one-off paste jobs.</p>
+
+<hr />
+
+<h2>Project ideas</h2>
+
+<ol>
+  <li><strong>Meetup headcount</strong> — Name, RSVP, checked-in, count of “Yes.”</li>
+  <li><strong>Program supply list</strong> — Item, quantity needed, quantity on hand, <code>IF</code> to flag shortages.</li>
+  <li><strong>Simple budget</strong> — Date, category, amount, running <code>SUM</code>, category <code>SUMIF</code>.</li>
+  <li><strong>Volunteer shifts</strong> — Person, date, start/end, hours calculated from times.</li>
+  <li><strong>Reading challenge tracker</strong> — Title, pages, genre, progress chart.</li>
+</ol>
+
+<hr />
+
+<h2>Habits that save pain later</h2>
+
+<ul>
+  <li>Headers in row 1; no blank rows inside the data block.</li>
+  <li>Raw data on one sheet; summaries and charts on another.</li>
+  <li>Never type a total you could formula.</li>
+  <li>Name ranges or use clear sheet tab names before formulas get long.</li>
+  <li>Fake data only on public share links.</li>
+</ul>
+
+<hr />
+
+<h2>Official docs &amp; practice</h2>
+
+<div class="table-wrap"><table class="resource-table"><thead><tr><th>Resource</th><th>Link</th></tr></thead><tbody>
+<tr><td>Google Sheets</td><td><a href="https://sheets.google.com/" rel="noopener noreferrer" target="_blank">https://sheets.google.com/</a></td></tr>
+<tr><td>Sheets help center</td><td><a href="https://support.google.com/docs/topic/9054603" rel="noopener noreferrer" target="_blank">https://support.google.com/docs/topic/9054603</a></td></tr>
+<tr><td>List of functions</td><td><a href="https://support.google.com/docs/table/25273" rel="noopener noreferrer" target="_blank">https://support.google.com/docs/table/25273</a></td></tr>
+<tr><td>Google Sheets training (Applied Digital Skills)</td><td><a href="https://applieddigitalskills.withgoogle.com/c/en/curriculum/spreadsheets" rel="noopener noreferrer" target="_blank">https://applieddigitalskills.withgoogle.com/c/en/curriculum/spreadsheets</a></td></tr>
+<tr><td>Wikipedia — Spreadsheet</td><td><a href="https://en.wikipedia.org/wiki/Spreadsheet" rel="noopener noreferrer" target="_blank">https://en.wikipedia.org/wiki/Spreadsheet</a></td></tr>
+</tbody></table></div>
+
+<hr />
+
+<p>Warm up on related ideas with <a href="#/themes/data-for-good">Data for Good</a> (charts from open data) or <a href="#/themes/automate-your-life">Automate Your Life</a> when you’re ready to script against CSV exports. Last session’s terminal notes stay at <a href="#/tutorials/terminal">Using the Terminal</a>.</p>
